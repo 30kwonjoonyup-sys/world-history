@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="only light">
+  <meta name="theme-color" content="#fbf9f3">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perspectives | Ondol: Revolutionary Heating System of South Korea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=9">
+  <style>
+    /* Force matching font uniform with context.html */
+    body, h1, h2, h3, .avatar-title, .speech-bubble, .points {
+      font-family: 'Nanum Myeongjo', serif;
+    }
+
+    /* Architectural Forum Row Layout */
+    .forum-container {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin: 2.5rem 0;
+      max-width: 100%;
+    }
+    
+    /* Character Frame Presentation Block */
+    .avatar-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .avatar-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--post);
+      margin-top: 0.6rem;
+    }
+
+    /* Traditional Speech Bubble Connector Elements */
+    .speech-bubble {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 8px solid var(--post);
+      border-radius: 4px;
+      padding: 1.8rem 2.2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .speech-bubble::before {
+      content: "";
+      position: absolute;
+      left: -16px;
+      top: 35px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: transparent var(--line) transparent transparent;
+    }
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 35px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: transparent var(--card) transparent transparent;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="index.html">Ondol: Revolutionary Heating System of South Korea</a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false">Menu</button>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="context.html">Historical Context</a>
+      <a href="impact.html">Impact &amp; Change</a>
+      <a href="perspectives.html" aria-current="page">Perspectives</a>
+      <a href="effects.html">Short &amp; Long Term</a>
+      <a href="verdict.html">Final Verdict</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Ondol Forum</h1>
+
+    <section class="climate">
+      <h2>Goguryeo Commoners' Perspective</h2>
+      
+      <div class="forum-container">
+        <!-- Left Column: Character Profile Presentation -->
+        <div class="avatar-block">
+          <figure class="frame" style="margin: 0; max-width: 140px;">
+            <div class="frame-wood" style="width: 130px; height: 130px; overflow: hidden; border-radius: 50%;">
+              <img src="painting.png" alt="Joseon Genre Painting" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%;">
+            </div>
+            <figcaption class="avatar-title">Goguryeo Commoner</figcaption>
+          </figure>
+        </div>
+
+        <!-- Right Column: Research Text Speech Box -->
+        <div class="speech-bubble">
+          <ul class="points">
+            <li>The Korean Ondol spread from the common people in the Goguryeo Kingdom, as they needed something to heat them during the cold winters of Korea.</li>
+            <li>Ondol kept the people warm throughout the winters, and it was a great innovation because of its extremely high accessibility.</li>
+            <li>The implementation of the Ondol affected common people by allowing and helping their survival during brutal winters.</li>
+            <li class="quote" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--line);">“벽화무덤의 주인공들인 귀족들과 달리 고구려의 민중들은 ‘돈이 덜 드는 난방 방식’인 구들을 택하였음이 분명하다. '신당서’와 '구당서' 기사처럼 ‘가난한 사람들이’ 겨울을 나기 위해서는 구들이 필수적이었음직하다…”</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="climate" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px dashed var(--line);">
+      <h2>Joseon Nobles' Perspective</h2>
+      
+      <div class="forum-container">
+        <!-- Left Column: Character Profile Presentation -->
+        <div class="avatar-block">
+          <figure class="frame" style="margin: 0; max-width: 140px;">
+            <div class="frame-wood" style="width: 130px; height: 130px; overflow: hidden; border-radius: 50%;">
+              <img src="painting2.png" alt="Joseon Nobles Painting" style="width: 100%; height: 100%; object-fit: cover; object-position: 63% 30%;">
+            </div>
+            <figcaption class="avatar-title">Joseon Noble (Yangban)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Right Column: Research Text Speech Box -->
+        <div class="speech-bubble">
+          <ul class="points">
+            <li>Later, the nobles started to implement the Ondol, which was the common people’s custom, during approximately the Joseon Kingdom.</li>
+            <li>Unlike the common people, the Ondol didn’t necessarily allow the survival of nobles, as the nobles already had a heating system, the furnace.</li>
+            <li>Moreover, the nobles usually sat on chairs or some kind of furniture instead of the floor to prevent the cold.</li>
+            <li>However, as the Ondol was spread to nobles, their social customs began to change. The nobles started to set the tables with food laid out on the floor and eat on the floor as the Ondol was brought.</li>
+            <li>Sitting on floors became common even for dinners in banquets, and the Ondol started the Korean tradition of putting seat cushions (방석) on the floor and eating together.</li>
+            <li class="quote" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--line);">“온돌의 보급은 생활 방식과 식사 문화도 변화하게 만들었다. 의자에 앉는 입식 생활이 바닥에 앉는 좌식 생활로 바뀌었다. 또 고려시대에 귀족은 의자에 앉아 식탁에 차려진 음식을 먹었는데, 조선시대에는 좌식이 퍼지면서 고급스러운 연회에서도 바닥에 앉아서 먹기 시작했다. 이에 따라 발이 낮은 소반이 유행했다.” (가스신문)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="climate" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px dashed var(--line);">
+      <h2>International Communities' Perspective</h2>
+      
+      <div class="forum-container">
+        <!-- Left Column: Character Profile Presentation with Bhutan Image Path -->
+        <div class="avatar-block">
+          <figure class="frame" style="margin: 0; max-width: 140px;">
+            <div class="frame-wood" style="width: 130px; height: 130px; overflow: hidden; border-radius: 50%;">
+              <img src="painting3.png" alt="International Community" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <figcaption class="avatar-title">Global Community</figcaption>
+          </figure>
+        </div>
+
+        <!-- Right Column: Research Text Speech Box -->
+        <div class="speech-bubble">
+          <ul class="points">
+            <li>Today, Ondol is being brought to other countries too.</li>
+            <li>One example is the Laya Central School in Bhutan. The school has been using the heating system of Bukhari, which creates a lot of smoke and comes at a high cost.</li>
+            <li>However, they implemented the Korean Ondol, which “will ease all these challenges”, according to the source.</li>
+            <li>Like this case, other countries are being affected by the scientific and eco-friendly system of Ondol and are slowly bringing the Korean Ondol to their countries.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

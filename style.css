@@ -1,0 +1,160 @@
+:root{
+  color-scheme:only light;
+  --bg:#f1f3f6; --paper:#fbf9f3; --ink:#1c2230; --muted:#3a4252; --line:#d9dde5;
+  --accent:#1f4e79; --accent-ink:#ffffff; --note:#fff4d6; --note-line:#c99a1c; --card:#ffffff;
+  --post:#5a3d22;
+  /* size of the roof/floor frame: shrinks on small or short screens */
+  --roofH:clamp(56px,8vw,16vh);
+  --floorH:clamp(78px,7vw,16vh);
+  --slabH:calc(var(--floorH) * .786);   /* visible height of the stone floor */
+  --headerH:96px;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--roofH) + var(--headerH) + 12px)}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);font:800 17px/1.7 "Nanum Myeongjo",Georgia,"Times New Roman",serif}
+
+/* ===== FIXED BACKGROUND FRAME (does not scroll) ===== */
+body::before{ /* thatched roof + eave to both edges */
+  content:"";position:fixed;top:0;left:0;right:0;height:var(--roofH);
+  background:url(roof.svg?v=3) center top / 100% 100% no-repeat, linear-gradient(var(--bg),var(--bg)) top / 100% 96% no-repeat;
+  z-index:30;pointer-events:none;
+}
+body::after{ /* stone floor to both edges, ondol parts in the middle */
+  content:"";position:fixed;bottom:0;left:0;right:0;height:var(--floorH);
+  background:url(floor.svg?v=3) center bottom / 100% 100% no-repeat;
+  z-index:30;pointer-events:none;
+}
+html::before,html::after{ /* wooden posts at the outer edges, from the header down to the stone floor */
+  content:"";position:fixed;top:calc(var(--roofH) + var(--headerH) - 6px);bottom:var(--slabH);
+  width:12px;background:linear-gradient(90deg,#4a3019,var(--post) 50%,#4a3019);
+  z-index:15;pointer-events:none;
+}
+html::before{left:0}
+html::after{right:0}
+
+/* ===== HEADER (fixed under the roof) ===== */
+h1,h2,h3,.site-title{font-family:"Nanum Myeongjo",Georgia,"Times New Roman",serif;font-weight:800;line-height:1.3}
+.site-header{position:fixed;top:calc(var(--roofH) - 6px);left:0;right:0;height:var(--headerH);z-index:20;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  background:url(header.svg?v=4) repeat-x left top / auto 100%, #5a3a20;box-shadow:0 4px 10px rgba(0,0,0,.25);padding:18px 1rem 8px}
+.site-title{font-weight:800;font-size:1.6rem;color:#f8ecd0;text-shadow:0 2px 3px rgba(0,0,0,.55);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+nav#nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.15rem}
+nav#nav a{padding:.3rem .65rem;border-radius:6px;text-decoration:none;color:#f4e6c8;font-size:.92rem;font-weight:700}
+nav#nav a:hover{background:rgba(255,255,255,.16)}
+nav#nav a[aria-current="page"]{background:#f3e4bf;color:#4a2f17;font-weight:800}
+.menu-btn{display:none;padding:.3rem .8rem;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#f8ecd0;border-radius:6px;font:inherit;font-size:.9rem}
+
+/* ===== SCROLLING CONTENT (a paper-colored panel between the posts) ===== */
+main{flex:1;width:100%;margin:0;padding:calc(var(--roofH) + var(--headerH) + 1.5rem) clamp(1.5rem,5vw,4rem) 2rem}
+/* content sits on the left; page headings stay centered */
+main h1{text-align:center}
+main section > :not(h1),main > .jump{max-width:880px}
+footer{width:100%;margin:0;border-top:1px solid var(--line);padding:1.2rem clamp(1.5rem,5vw,4rem) calc(var(--slabH) + 1.2rem);text-align:left;color:var(--muted);font-size:.9rem}
+h1{font-size:2.1rem;margin:0 0 1rem}
+h2,h3{font-size:1.5rem;margin:1.8rem 0 .6rem;color:var(--post)}
+a{color:var(--accent)}
+section{margin-bottom:2rem}
+.hero h1{font-size:2.4rem}
+.byline{color:var(--muted);margin-top:-.5rem}
+.claim{font-size:1.15rem;border-left:4px solid var(--accent);padding:.4rem 0 .4rem 1rem}
+.todo{background:var(--note);border-left:4px solid var(--note-line);padding:.7rem 1rem;border-radius:0 6px 6px 0}
+.visual{margin:1.5rem 0}
+.placeholder{display:grid;place-items:center;min-height:220px;border:2px dashed var(--line);border-radius:8px;color:var(--muted);background:var(--card)}
+figcaption,.credit{font-size:.88rem;color:var(--muted)}
+.table-wrap{overflow-x:auto;margin:1rem 0}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+th,td{border:1px solid var(--line);padding:.6rem .8rem;text-align:left;vertical-align:top;min-width:120px}
+th{background:var(--bg);font-weight:800}
+blockquote{margin:1.5rem 0;padding:.5rem 1.2rem;border-left:4px solid var(--accent);font-size:1.1rem}
+cite{display:block;font-size:.85rem;font-style:normal;color:var(--muted);margin-top:.3rem}
+.timeline{padding-left:1.2rem}
+.timeline li{margin:.4rem 0}
+.jump{display:flex;gap:1rem;margin-bottom:1rem}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+@media (max-width:1200px){
+  :root{--headerH:58px}
+  .site-header{padding:13px 1rem 5px}
+  .site-header{flex-direction:row;justify-content:space-between;gap:.5rem}
+  .site-title{flex:1;min-width:0;font-size:1.1rem}
+  .menu-btn{display:block}
+  nav#nav{display:none;position:absolute;top:100%;max-height:calc(100vh - var(--roofH) - var(--headerH));overflow-y:auto;left:0;right:0;flex-direction:column;background:#5a3a20;border-bottom:3px solid #3a2312;padding:.4rem 1rem}
+  nav#nav.open{display:flex}
+  h1{font-size:1.7rem}.hero h1{font-size:1.9rem}
+}
+
+/* ===== ORGANIZED CONTENT BLOCKS ===== */
+main section > h2{padding-bottom:.4rem;border-bottom:3px solid var(--post)}
+.lead{font-size:1.25rem;line-height:1.6;margin:1rem 0 1.4rem}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem}
+.stat{display:flex;flex-direction:column;gap:.35rem;padding:1.1rem 1.2rem;background:var(--card);border:1px solid var(--line);border-top:6px solid var(--accent);border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.stat.winter{border-top-color:#2f6fa3}
+.stat.summer{border-top-color:#d9822b}
+.stat-label{font-size:1rem;color:var(--muted)}
+.stat-value{font-size:2.1rem;line-height:1.15;font-family:"Nanum Myeongjo",Georgia,serif;font-weight:800}
+.stat.winter .stat-value{color:#1f5a8c}
+.stat.summer .stat-value{color:#b4631a}
+.scale{margin:1.4rem 0}
+.scale-bar{position:relative;height:18px;border-radius:9px;background:#e4e0d6;border:1px solid var(--line)}
+.range{position:absolute;top:-1px;bottom:-1px;border-radius:9px}
+.range.winter{background:#2f6fa3}
+.range.summer{background:#d9822b}
+.scale-ticks{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-top:.3rem}
+.callout{margin:1.4rem 0;padding:1.1rem 1.3rem;font-size:1.2rem;line-height:1.55;background:#f3e8d0;border-left:8px solid var(--post);border-radius:0 8px 8px 0}
+@media (max-width:640px){.stat-grid{grid-template-columns:1fr}.stat-value{font-size:1.8rem}}
+
+/* ===== BULLET POINTS INSIDE A CARD ===== */
+.climate-card{background:var(--card);border:1px solid var(--line);border-left:8px solid var(--post);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1rem 0;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.climate-card .lead{margin:0 0 .9rem;padding-bottom:.9rem;border-bottom:1px solid var(--line)}
+.points{margin:0;padding-left:1.4rem;font-size:1.15rem;line-height:1.6}
+.points li{margin:.6rem 0;padding-left:.3rem}
+.points li::marker{font-size:1.3em}
+.points .winter strong,.points strong{white-space:nowrap}
+.points li.winter strong{color:#1f5a8c}
+.points li.summer strong{color:#b4631a}
+
+/* ===== 17th century block ===== */
+.subhead{margin:1.8rem 0 .6rem;font-size:1.5rem;color:var(--post)}
+.points li.quote{font-style:italic}
+.points ul{margin:.5rem 0 .2rem;padding-left:1.3rem;font-size:1.02rem;list-style:circle}
+.points ul li{margin:.3rem 0}
+.points ul li::marker{font-size:1em}
+
+/* every bullet point on the site: one light brown */
+li::marker{color:#b07a45 !important}
+
+/* ===== WOODEN PICTURE FRAMES ===== */
+.frame{margin:1rem 0 .6rem;max-width:560px}
+.frame-wood{padding:12px;border-radius:4px;
+  background:repeating-linear-gradient(90deg,rgba(0,0,0,.08) 0 2px,transparent 2px 7px),linear-gradient(145deg,#8a5d36,#5a3a20 55%,#7a5230);
+  box-shadow:0 4px 10px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -2px 0 rgba(0,0,0,.35)}
+.frame-wood img{display:block;width:100%;height:auto;border:6px solid #f3e8d0;outline:2px solid #3a2312;background:#fff}
+.frame figcaption{margin-top:.6rem;font-size:.9rem;line-height:1.45;color:var(--muted)}
+
+/* ===== IMAGE FRAME BESIDE ITS CONTENT BOX ===== */
+.cat-row{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:1.5rem;align-items:center;max-width:1240px;margin:1.2rem 0}
+.cat-row .climate-card{margin:0}
+.cat-row .frame{margin:0;max-width:none}
+@media (max-width:1000px){.cat-row{grid-template-columns:1fr}.cat-row .frame{max-width:420px}}
+
+/* ===== HOME: text beside framed picture ===== */
+.hero-row{display:grid;grid-template-columns:minmax(0,1fr) 520px;gap:2rem;align-items:start;max-width:1240px}
+.hero-row .frame{margin:0;max-width:none}
+.hero-text > h2{padding-bottom:.4rem;border-bottom:3px solid var(--post)}
+.hero-text > h2:first-child{margin-top:.4rem}
+@media (max-width:1000px){.hero-row{grid-template-columns:1fr}.hero-row .frame{max-width:520px}}
+
+/* ===== MERGED 17th CENTURY BLOCK: one card, pictures stacked beside it ===== */
+.cat-merged{align-items:stretch}
+.frame-stack{display:flex;flex-direction:column;gap:1rem}
+.frame-stack .frame{margin:0;max-width:none}
+
+/* 17th century card stretches to the bottom of the last picture; later boxes sit below it */
+.cat-below{display:flex;flex-direction:column;min-width:0}
+.cat-below .subhead:first-child{margin-top:.3rem}
+.cat-below .subhead{margin-top:1.5rem}
+@media (min-width:1001px){
+  .cat-merged .cat-first{grid-column:1;grid-row:1}
+  .cat-merged .frame-stack{grid-column:2;grid-row:1}
+  .cat-merged .cat-below{grid-column:1;grid-row:2}
+}
